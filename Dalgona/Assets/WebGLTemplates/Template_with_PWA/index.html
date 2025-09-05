@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Dalgona</title>
+    <link rel="shortcut icon" href="TemplateData/logo_mad.png">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+
+    <link rel="manifest" href="manifest.json" />
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('ServiceWorker.js');
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+    
+    <div id="unity-container">
+        <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+        <div id="unity-loading-bar">
+            <div class="box__full">
+                <!-- <div id="unity-logo"></div> -->
+                <div class="progress__wrap">
+                    <div id="unity-progress-bar-empty">
+                        <div class="box__full">
+                            <div id="unity-progress-bar-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="unity-warning"> 
+        </div>
+    </div>
+
+    <!-- Unity build -->
+    <script src="index.js"></script>
+
+    <!-- Worldcoin MiniKit -->
+    <script type="module">
+        import { MiniKit } from 'https://cdn.jsdelivr.net/npm/@worldcoin/minikit-js@1.9.6/+esm';
+        MiniKit.install();
+        if (!MiniKit.isInstalled()) {
+            console.warn("MiniKit is not installed. Please install it to use the app.");
+        }
+    </script>
+
+    <!-- Eruda for debugging   
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+     -->
+    
+
+    <!-- Miniapp JS (dùng MiniKit) -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
+    <script src="miniapp.js"></script>
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTCB3TL9V6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-JTCB3TL9V6');
+    </script>
+
+	<!-- ads-->
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6334078962160959"
+     crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
